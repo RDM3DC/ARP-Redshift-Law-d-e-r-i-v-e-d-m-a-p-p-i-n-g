@@ -20,7 +20,9 @@ This repo includes a compact toolkit to:
 - `scripts/compare_models.py`: compare single- vs two-timescale fits with AIC/BIC.
 - `scripts/batch_compare_models.py`: rank many CSV tracks by single vs two-timescale evidence.
 - `scripts/sim_oscillatory.py`: simulate and scan oscillatory extension parameters.
+- `scripts/sim_bounded_oscillatory.py`: bounded oscillatory law (nonnegative by construction for `0<=epsilon<1`).
 - `data/sample_observations.csv`: example fit input.
+- `data/candidate_top_equation.json`: leaderboard-ready candidate metadata.
 
 ## Quick Start
 
@@ -33,6 +35,7 @@ python scripts/compare_models.py --csv data/sample_observations.csv --out out --
 python scripts/batch_compare_models.py --data-dir data --pattern "*.csv" --out out --skip-header
 python scripts/sim_oscillatory.py --gamma 1 --omega 2 --z-horizon 10 --tmax 5 --out out
 python scripts/sim_oscillatory.py --gamma 1 --omega 2 --z-horizon 10 --tmax 5 --scan --out out
+python scripts/sim_bounded_oscillatory.py --gamma 1 --omega 2 --epsilon 0.35 --phi 0.4 --z-horizon 10 --tmax 5 --out out
 ```
 
 Outputs are written to `out/`:
@@ -53,6 +56,9 @@ Outputs are written to `out/`:
 - `oscillatory_plot.png`
 - `oscillatory_scan_report.txt`
 - `oscillatory_scan_top.csv`
+- `bounded_oscillatory_report.txt`
+- `bounded_oscillatory_series.csv`
+- `bounded_oscillatory_plot.png`
 
 ## Next practical step
 

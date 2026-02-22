@@ -1,0 +1,26 @@
+{
+  "name": "Bounded Oscillatory ARP Redshift Bypass Law",
+  "equationLatex": "z(t)=z_h\left(1-e^{-\\gamma t}\\right)\\left(1-\\epsilon\\cos(\\omega t+\\phi)\\right),\\quad 0\\le \\epsilon<1",
+  "differentialLatex": "\\dot z = z_h\\gamma e^{-\\gamma t}\\left(1-\\epsilon\\cos(\\omega t+\\phi)\\right) + z_h\\left(1-e^{-\\gamma t}\\right)\\epsilon\\omega\\sin(\\omega t+\\phi)",
+  "reference": "derived: ARP redshift + bounded modulation",
+  "description": "A bounded oscillatory extension of ARP redshift relaxation. It preserves nonnegative trajectories while allowing controlled evasive wobble via phase modulation.",
+  "assumptions": [
+    "Single effective horizon scale z_h over the interval.",
+    "Relaxation timescale gamma^{-1} and modulation timescale omega^{-1} are separable.",
+    "Bounded modulation amplitude 0<=epsilon<1 enforces nonnegative trajectory."
+  ],
+  "proposedRubric": {
+    "novelty": 28,
+    "tractability": 19,
+    "plausibility": 19,
+    "units": "OK",
+    "theory": "PASS",
+    "animationBonus": 5,
+    "imageBonus": 5,
+    "targetTotal": 96
+  },
+  "artifacts": {
+    "animation": "linked",
+    "image": "linked"
+  }
+}

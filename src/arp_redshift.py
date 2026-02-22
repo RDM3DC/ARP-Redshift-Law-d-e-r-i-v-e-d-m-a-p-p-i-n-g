@@ -73,6 +73,30 @@ def z_of_t_oscillatory(
     return envelope * np.sin(omega * t + phi)
 
 
+def z_of_t_bounded_oscillatory(
+    t: np.ndarray,
+    z_horizon: float,
+    gamma: float,
+    omega: float,
+    epsilon: float,
+    phi: float = 0.0,
+) -> np.ndarray:
+    """Bounded oscillatory extension that stays nonnegative for 0 <= epsilon < 1.
+
+    z(t) = z_horizon * (1 - exp(-gamma*t)) * [1 - epsilon*cos(omega*t + phi)]
+
+    Since 1 - epsilon*cos(.) is in [1-epsilon, 1+epsilon], this keeps z(t) >= 0
+    for all t when epsilon is constrained to [0, 1).
+    """
+    if not (0.0 <= epsilon < 1.0):
+        raise ValueError("epsilon must satisfy 0 <= epsilon < 1")
+
+    t = np.asarray(t, dtype=float)
+    envelope = z_horizon * (1.0 - np.exp(-gamma * t))
+    modulation = 1.0 - epsilon * np.cos(omega * t + phi)
+    return envelope * modulation
+
+
 def dz_dt(z: np.ndarray, z0: float, gamma: float) -> np.ndarray:
     """Right-hand side of ODE: dz/dt = gamma * (z0 - z)."""
     z = np.asarray(z, dtype=float)
