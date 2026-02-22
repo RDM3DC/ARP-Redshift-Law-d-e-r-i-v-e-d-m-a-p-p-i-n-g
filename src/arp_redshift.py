@@ -54,6 +54,25 @@ def z_of_t_two_timescale(
     )
 
 
+def z_of_t_oscillatory(
+    t: np.ndarray,
+    z_horizon: float,
+    gamma: float,
+    omega: float,
+    phi: float = 0.0,
+) -> np.ndarray:
+    """Oscillatory toy extension.
+
+    z(t) = z_horizon * (1 - exp(-gamma * t)) * sin(omega * t + phi)
+
+    This is useful as a trajectory-shaping toy model. For positive-only trajectories
+    over a finite interval, tune omega and phi so the sine factor does not cross zero.
+    """
+    t = np.asarray(t, dtype=float)
+    envelope = z_horizon * (1.0 - np.exp(-gamma * t))
+    return envelope * np.sin(omega * t + phi)
+
+
 def dz_dt(z: np.ndarray, z0: float, gamma: float) -> np.ndarray:
     """Right-hand side of ODE: dz/dt = gamma * (z0 - z)."""
     z = np.asarray(z, dtype=float)
