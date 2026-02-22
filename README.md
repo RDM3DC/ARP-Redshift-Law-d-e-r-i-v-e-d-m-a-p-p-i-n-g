@@ -18,6 +18,7 @@ This repo includes a compact toolkit to:
 - `scripts/solve_and_plot.py`: generate solution curves and residual checks.
 - `scripts/fit_from_csv.py`: fit parameters from CSV observations.
 - `scripts/compare_models.py`: compare single- vs two-timescale fits with AIC/BIC.
+- `scripts/batch_compare_models.py`: rank many CSV tracks by single vs two-timescale evidence.
 - `data/sample_observations.csv`: example fit input.
 
 ## Quick Start
@@ -28,6 +29,7 @@ From repository root:
 python scripts/solve_and_plot.py --z0 1.0 --gamma 0.8 --tmax 8 --out out
 python scripts/fit_from_csv.py --csv data/sample_observations.csv --out out --skip-header
 python scripts/compare_models.py --csv data/sample_observations.csv --out out --skip-header
+python scripts/batch_compare_models.py --data-dir data --pattern "*.csv" --out out --skip-header
 ```
 
 Outputs are written to `out/`:
@@ -40,6 +42,9 @@ Outputs are written to `out/`:
 - `model_compare_report.txt`
 - `model_compare_series.csv`
 - `model_compare_plot.png`
+- `batch_model_compare_report.txt`
+- `batch_model_compare_summary.csv`
+- `batch_model_compare_scores.png`
 
 ## Next practical step
 
